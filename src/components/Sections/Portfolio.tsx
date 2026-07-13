@@ -35,7 +35,7 @@ const Portfolio: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-4 left-4 right-4">
             <div className="flex space-x-2">
-              {project.demoUrl && (
+              {project.demoStatus === 'available' && project.demoUrl && (
                 <motion.a
                   href={project.demoUrl}
                   target="_blank"
@@ -46,6 +46,17 @@ const Portfolio: React.FC = () => {
                 >
                   <ExternalLink className="w-5 h-5 text-white" />
                 </motion.a>
+              )}
+              {project.demoStatus === 'unavailable' && (
+                <motion.button
+                  type="button"
+                  onClick={() => window.alert(project.demoMessage || 'Live demo is not available yet.')}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-2 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200"
+                >
+                  <ExternalLink className="w-5 h-5 text-white" />
+                </motion.button>
               )}
               {project.githubUrl && (
                 <motion.a
@@ -222,7 +233,7 @@ const Portfolio: React.FC = () => {
                         
                         {/* Action Buttons */}
                         <div className="flex space-x-4">
-                          {selectedProject.demoUrl && (
+                          {selectedProject.demoStatus === 'available' && selectedProject.demoUrl && (
                             <motion.a
                               href={selectedProject.demoUrl}
                               target="_blank"
@@ -234,6 +245,18 @@ const Portfolio: React.FC = () => {
                               <ExternalLink className="w-5 h-5" />
                               <span>Live Demo</span>
                             </motion.a>
+                          )}
+                          {selectedProject.demoStatus === 'unavailable' && (
+                            <motion.button
+                              type="button"
+                              onClick={() => window.alert(selectedProject.demoMessage || 'Live demo is not available yet.')}
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="flex-1 px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white rounded-lg font-semibold flex items-center justify-center space-x-2 transition-colors duration-200"
+                            >
+                              <ExternalLink className="w-5 h-5" />
+                              <span>Live Demo Unavailable</span>
+                            </motion.button>
                           )}
                           {selectedProject.githubUrl && (
                             <motion.a

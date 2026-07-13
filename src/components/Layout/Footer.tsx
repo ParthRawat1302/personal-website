@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Code2 } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/ParthRawat1302', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/parth-rawat-398a95291', label: 'LinkedIn' },
-    // { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Code2, href: 'https://leetcode.com/u/Parthrawat1303', label: 'LeetCode' },
     { icon: Mail, href: 'mailto:parthrawat0987654321@gmail.com', label: 'Email' },
   ];
 

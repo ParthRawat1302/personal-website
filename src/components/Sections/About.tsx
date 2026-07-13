@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Palette, Zap, Users } from 'lucide-react';
+import { Code, Brain, Zap, Users } from 'lucide-react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { experiences } from '../../data/portfolio';
+import { certifications } from '../../data/portfolio';
 
 const About: React.FC = () => {
   const { ref, isIntersecting } = useIntersectionObserver();
@@ -14,9 +14,9 @@ const About: React.FC = () => {
       description: 'Writing maintainable, scalable, and efficient code following best practices.',
     },
     {
-      icon: Palette,
-      title: 'Creative Design',
-      description: 'Crafting beautiful and intuitive user interfaces that enhance user experience.',
+      icon: Brain,
+      title: 'AI/ML Curiosity',
+      description: 'Exploring practical AI solutions and intelligent products that solve real problems.',
     },
     {
       icon: Zap,
@@ -44,12 +44,11 @@ const About: React.FC = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-            Passionate developer with a keen eye for design and a love for creating exceptional digital experiences.
+            I’m a developer who enjoys building polished products, exploring AI/ML ideas, and creating solutions that make everyday work feel simpler.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isIntersecting ? { opacity: 1, x: 0 } : {}}
@@ -58,21 +57,16 @@ const About: React.FC = () => {
           >
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">
-                Hi there! I'm Parth Rawat
+                Hi there! I’m Parth Rawat
               </h3>
               <p className="text-lg text-secondary-600 dark:text-secondary-400 leading-relaxed">
-                I'm a passionate full-stack developer creating 
-                digital solutions that make a difference. My journey began with a curiosity about 
-                how things work on the web, and it has evolved into a career dedicated to crafting 
-                exceptional user experiences.
+                I’m a full-stack developer with a growing interest in AI/ML and thoughtful product design. I enjoy building modern applications that are useful, responsive, and enjoyable to use.
               </p>
               <p className="text-lg text-secondary-600 dark:text-secondary-400 leading-relaxed">
-                I specialize in modern web technologies including React, TypeScript, Node.js,spring-boot and 
-                cloud platforms. When I'm not coding, you'll find me to learn new things or following my passion.
+                My work blends frontend experiences, backend systems, and problem-solving, with a focus on creating real impact through practical, scalable solutions.
               </p>
             </div>
 
-            {/* Highlights Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {highlights.map((highlight, index) => (
                 <motion.div
@@ -94,59 +88,51 @@ const About: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Timeline */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isIntersecting ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-8">
-              Career Journey
+            <h3 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100 mb-6">
+              Certifications
             </h3>
-            
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-accent-500" />
-              
-              {experiences.map((experience, index) => (
+
+            <div className="space-y-4">
+              {certifications.map((certification, index) => (
                 <motion.div
-                  key={experience.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isIntersecting ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
-                  className="relative pl-12 pb-8"
+                  key={certification.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  className="glass rounded-lg p-6 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-300"
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-2 top-2 w-4 h-4 bg-primary-500 rounded-full border-4 border-white dark:border-secondary-900 shadow-lg" />
-                  
-                  {/* Content */}
-                  <div className="glass rounded-lg p-6 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors duration-300">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                    <div>
                       <h4 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">
-                        {experience.position}
+                        {certification.title}
                       </h4>
-                      <span className="text-sm text-primary-600 dark:text-primary-400 font-medium">
-                        {experience.duration}
-                      </span>
+                      <p className="text-primary-600 dark:text-primary-400 font-medium">
+                        {certification.issuer}
+                      </p>
                     </div>
-                    <p className="text-primary-600 dark:text-primary-400 font-medium mb-3">
-                      {experience.company}
-                    </p>
-                    <p className="text-secondary-600 dark:text-secondary-400 mb-4">
-                      {experience.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {experience.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    <span className="text-sm text-secondary-500 dark:text-secondary-400 font-medium">
+                      {certification.year}
+                    </span>
                   </div>
+                  <p className="text-secondary-600 dark:text-secondary-400 mb-4">
+                    {certification.description}
+                  </p>
+                  {certification.credentialUrl && (
+                    <a
+                      href={certification.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+                    >
+                      Open & download credential
+                    </a>
+                  )}
                 </motion.div>
               ))}
             </div>

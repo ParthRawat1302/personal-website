@@ -80,8 +80,8 @@ const onSubmit = async (data: ContactForm) => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Indore,India',
-      href: 'https://maps.google.com/?q=Indore,India',
+      value: 'Bengaluru, IIIT Bangalore',
+      href: 'https://maps.google.com/?q=Bengaluru,IIIT%20Bangalore',
     },
   ];
 
@@ -150,22 +150,27 @@ const onSubmit = async (data: ContactForm) => {
               ))}
             </div>
 
-            {/* Map Placeholder */}
+            {/* Location Card */}
 <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
   transition={{ duration: 0.8, delay: 0.8 }}
-  className="glass rounded-lg overflow-hidden h-64"
+  className="glass rounded-lg p-6"
 >
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235526.94958915675!2d75.69903607352782!3d22.72420499694238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1754943639683!5m2!1sen!2sin"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
+  <h4 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100 mb-3">
+    Current Location
+  </h4>
+  <p className="text-secondary-600 dark:text-secondary-400 mb-4">
+    Bengaluru, IIIT Bangalore
+  </p>
+  <a
+    href="https://maps.google.com/?q=Bengaluru,IIIT%20Bangalore"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:underline"
+  >
+    Open in Google Maps
+  </a>
 </motion.div>
 
             
@@ -204,7 +209,7 @@ const onSubmit = async (data: ContactForm) => {
               >
                 <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
                 <p className="text-red-700 dark:text-red-300">
-                  Something went wrong. Please try again later.
+                  The message service is currently unavailable. Please email me directly at parthrawat0987654321@gmail.com.
                 </p>
               </motion.div>
             )}

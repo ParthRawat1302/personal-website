@@ -2,18 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, ChevronDown } from 'lucide-react';
 
+const baseUrl = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env?.BASE_URL || '/';
+
 const Hero: React.FC = () => {
   const [typedText, setTypedText] = useState('');
-  const fullText = 'Full Stack Developer & UI/UX Designer';
+  const fullText = 'Full Stack Developer • AI/ML Enthusiast';
+  const resumeUrl = `${baseUrl}Resumes.pdf`;
 
   const downloadPDF = () => {
-  const link = document.createElement('a');
-  link.href = '/Resumes.pdf';  // Make sure case matches exact filename
-  link.download = 'Resumes.pdf';  // Suggested file name on download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Parth_Rawat_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+  };
 
   
   useEffect(() => {
@@ -92,7 +96,7 @@ const Hero: React.FC = () => {
                 transition={{ delay: 0.7 }}
                 className="text-lg text-secondary-600 dark:text-secondary-400 max-w-2xl leading-relaxed"
               >
-              I create exceptional digital experiences by combining beautiful, user-friendly web design with robust software development. Passionate about building scalable and efficient solutions that solve real problems and bring innovative ideas to life.
+                I build modern web experiences and practical AI-powered solutions with a strong focus on clean architecture, user impact, and continuous learning. I enjoy turning ideas into fast, scalable products that feel effortless to use.
               </motion.p>
             </div>
 
@@ -135,8 +139,8 @@ const Hero: React.FC = () => {
               className="grid grid-cols-3 gap-8 pt-8"
             >
               {[
-{ number: '2+', label: 'Personal Projects' },
-{ number: 'Learning', label: 'Years of Growth' },
+{ number: '4', label: 'Projects Built' },
+{ number: '2+', label: 'AI/ML Interests' },
 { number: '100%', label: 'Passion & Dedication' },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
@@ -170,7 +174,7 @@ const Hero: React.FC = () => {
                 className="relative z-10 glass rounded-2xl p-4 backdrop-blur-sm"
               >
                 <img
-                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  src={`${baseUrl}Photo.jpeg`}
                   alt="Parth Rawat"
                   className="w-full h-auto rounded-xl shadow-2xl"
                 />

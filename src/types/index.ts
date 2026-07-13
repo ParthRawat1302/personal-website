@@ -8,6 +8,8 @@ export interface Project {
   demoUrl?: string;
   githubUrl?: string;
   featured: boolean;
+  demoStatus?: 'available' | 'unavailable';
+  demoMessage?: string;
 }
 
 export interface Skill {
@@ -15,6 +17,15 @@ export interface Skill {
   level: number;
   category: 'frontend' | 'backend' | 'tools' | 'design';
   icon: string;
+}
+
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  year: string;
+  description: string;
+  credentialUrl?: string;
 }
 
 export interface Experience {

@@ -12,7 +12,6 @@ const Skills: React.FC = () => {
     { id: 'frontend', name: 'Frontend' },
     { id: 'backend', name: 'Backend' },
     { id: 'tools', name: 'Tools' },
-    { id: 'design', name: 'Design' },
   ];
 
   const filteredSkills = activeCategory === 'all' 
@@ -163,12 +162,12 @@ const Skills: React.FC = () => {
             },
             {
               title: 'Backend Proficiency',
-              description: 'Strong foundation in Node.js, Python, and database technologies for building scalable server-side applications.',
+              description: 'Strong foundation in Node.js, Python, AI/ML concepts, and database technologies for building scalable server-side applications.',
               icon: '⚙️',
             },
             {
               title: 'Full Stack Mindset',
-              description: 'Comprehensive understanding of the entire development lifecycle from conception to deployment.',
+              description: 'Comprehensive understanding of the entire development lifecycle from conception to deployment with growing interest in intelligent products.',
               icon: '🚀',
             },
           ].map((item, index) => (
